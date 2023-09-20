@@ -85,6 +85,9 @@ jobs:
     - name: Check For Security Issues
       run: cd backend && npm audit --audit-level=moderate
 
+    - name: Fix Security Audit
+      run: cd backend && npm audit fix
+
 
  
 
