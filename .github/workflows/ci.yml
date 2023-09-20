@@ -53,5 +53,27 @@ jobs:
 
     - name: Lint the code 
       run: cd backend && npm run lint
+ Test:
+  needs: [Build]
+  runs-on: ubuntu-latest
+  steps:
+    - name: Ckeckout
+      uses: actions/checkout@v1
+
+    - name: cache Node Modules
+      id: cache
+      uses: actions/cache@v2
+      with:
+       path: node_modules
+       key: node-modules-cache
+
+
+    - name: Install Dependencies
+      if: steps.cache.outputs.cache-hit != true
+      run: cd backend && npm ci
+
+    - name: Run Unit Test
+      run: cd backend && npm t
+ 
 
 
