@@ -88,6 +88,35 @@ jobs:
        npm audit --audit-level=high
        npm audit fix
 
+ Static-analysis:
+  needs: [Build]
+  runs-on: ubuntu-latest
+  permissions:
+    security-events: write
+  steps: 
+  - uses: actions/checkout@v1
+  
+  - name: Initialize CodeQL
+    uses: github/codeQL-actions/init@v1
+    with:
+      language: javascript
+
+  - name: Setup Node
+    uses: actions/checkout@v1
+    with:
+       node-version: 16.x
+
+  - name: Install Deps
+    run: cd backend && npm ci
+
+  - name: Build
+    run: cd backend && nmp run build
+
+  - name: Perform Analysis
+    uses: github/codeQL-actions/init@v1
+
+
+
 
 
  
