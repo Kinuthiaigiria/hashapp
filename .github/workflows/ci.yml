@@ -17,7 +17,7 @@ jobs:
       - name: Setup Node
         uses: actions/checkout@v1
         with:
-          node-version: 16.x
+         node-version: 16.x
 
       - name: Install Dependencies
         run: cd backend && npm ci
@@ -34,6 +34,7 @@ jobs:
          name: backend-artifact
          path: backend/build/artifact.zip
  Lint:
+  needs: [Build]
   runs-on: ubuntu-latest
   steps:
     - name: Ckeckout
