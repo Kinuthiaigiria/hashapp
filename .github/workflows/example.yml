@@ -1,0 +1,22 @@
+# stages:
+#     - build
+#     - test
+#     - security-audit
+  
+# build:
+#     stage: build
+#     script:
+#       - mvn clean package
+  
+# test:
+#     stage: test
+#     script:
+#       - mvn test
+  
+#  security-audit:
+#     stage: security-audit
+#     script:
+#       - mvn dependency-check:check
+  
+  
+  

@@ -83,8 +83,8 @@ jobs:
       uses: actions/checkout@v1
 
     - name: Check For Security Issues
-      run: cd backend && npm audit --audit-level=medium
-      
+      run: cd backend && npm audit --audit-level=moderate
+
 
  
 
