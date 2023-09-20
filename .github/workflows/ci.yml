@@ -37,7 +37,7 @@ jobs:
   needs: [Build]
   runs-on: ubuntu-latest
   steps:
-    - name: Ckeckout
+    - name: Checkout
       uses: actions/checkout@v1
 
     - name: cache Node Modules
@@ -57,7 +57,7 @@ jobs:
   needs: [Build]
   runs-on: ubuntu-latest
   steps:
-    - name: Ckeckout
+    - name: Checkout
       uses: actions/checkout@v1
 
     - name: cache Node Modules
@@ -74,6 +74,18 @@ jobs:
 
     - name: Run Unit Test
       run: cd backend && npm t
+
+ Security-audit:
+  needs: [Build]
+  runs-on: [ubuntu-latest]
+  steps:
+    - name: checkout
+      uses: actions/checkout@v1
+
+    - name: Check For Security Issues
+      run: cd backend && npm audit --audit-level=medium
+      
+
  
 
 
